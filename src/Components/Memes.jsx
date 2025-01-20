@@ -42,7 +42,6 @@ export default function Memes() {
     <div className="flex flex-col items-center justify-center bg-gray-100 p-8">
       <h1 className="text-4xl font-bold text-gray-800">Memes Page</h1>
        
-
       {/* Flex container for memes in a horizontal row */}
       <div className="memes-container">
         {memes.map((meme, index) => (
@@ -54,12 +53,12 @@ export default function Memes() {
             />
             <div className="meme-card-body">
               <h5 className="text-lg font-semibold">{meme.name}</h5>
+              {/* View Therapy Button */}
+              <button className="view-therapy-btn">View Therapy</button>
             </div>
           </div>
         ))}
       </div>
- 
-      
     </div>
   );
 }

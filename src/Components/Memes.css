@@ -68,3 +68,55 @@ body {
   height: 100vh; /* Make sure it covers the entire page */
   margin: 0; /* Remove default margin */
 }
+/* Memes.css */
+.memes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Adds space between cards */
+  justify-content: center;
+}
+
+.meme-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.meme-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.meme-card-body {
+  padding: 8px;
+}
+
+.meme-card-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.view-therapy-btn {
+  background-color: #3498db; /* Button background color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.view-therapy-btn:hover {
+  background-color: #2980b9; /* Change color on hover */
+}
+
+.view-therapy-btn:focus {
+  outline: none;
+}
+
