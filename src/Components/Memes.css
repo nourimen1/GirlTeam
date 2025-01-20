@@ -119,4 +119,32 @@ body {
 .view-therapy-btn:focus {
   outline: none;
 }
+.therapy-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 7; /* Show only the first 7 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 10.5em; /* Adjust based on font-size (assuming ~1.5em per line) */
+}
+
+.therapy-description.expanded {
+  -webkit-line-clamp: unset; /* Show full text when expanded */
+  max-height: none;
+}
+
+.see-more-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.see-more-button:hover {
+  background-color: #0056b3;
+}
 

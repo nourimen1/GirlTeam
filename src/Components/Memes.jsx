@@ -1,63 +1,66 @@
-import axios from 'axios'; // Import Axios
+import axios from 'axios';
 import { useEffect, useState } from 'react';
-import './Memes.css'; // Import the CSS file
+import './Memes.css';
 
-export default function Memes() {
-  const [memes, setMemes] = useState([]); 
+export default function Therapies() {
+  const [therapies, setTherapies] = useState([]); 
   const [loading, setLoading] = useState(true);  
   const [error, setError] = useState(null);  
+  const [expanded, setExpanded] = useState({}); 
 
   useEffect(() => {
-    const fetchMemes = async () => {
+    const fetchTherapies = async () => {
       try {
-        const response = await axios.get('https://api.imgflip.com/get_memes');  // Use Axios for GET request
-        setMemes(response.data.data.memes);  // Access the memes data from response
+        const response = await axios.get('https://api.fda.gov/drug/label.json?search=therapy&limit=10');  
+        setTherapies(response.data.results);  
       } catch (error) {
-        setError(error.message);  // Handle errors
+        setError(error.message);  
       } finally {
-        setLoading(false);  // Stop loading once the request is done
+        setLoading(false);  
       }
     };
 
-    fetchMemes();  // Call the fetchMemes function
-  }, []);  // Empty dependency array to run once on component mount
+    fetchTherapies();  
+  }, []);  
 
-  if (loading) {
-    return (
-      <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-        <h1 className="text-4xl font-bold text-gray-800">Loading memes...</h1>
-      </div>
-    );
-  }
+  const toggleExpand = (index) => {
+    setExpanded((prev) => ({ ...prev, [index]: !prev[index] }));
+  };
 
-  if (error) {
-    return (
-      <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-        <h1 className="text-4xl font-bold text-gray-800">Error: {error}</h1>
-      </div>
-    );
-  }
+  if (loading) return <h1>Loading therapies...</h1>;
+  if (error) return <h1>Error: {error}</h1>;
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-100 p-8">
-      <h1 className="text-4xl font-bold text-gray-800">Memes Page</h1>
-       
-      {/* Flex container for memes in a horizontal row */}
+    <div className="flex flex-col items-center bg-gray-100 p-8">
+      <h1 className="text-4xl font-bold text-gray-800">Therapies Page</h1>
+      
       <div className="memes-container">
-        {memes.map((meme, index) => (
-          <div key={index} className="meme-card">
-            <img 
-              src={meme.url}  
-              className="meme-card-image" 
-              alt={`Meme ${index + 1}`} 
-            />
-            <div className="meme-card-body">
-              <h5 className="text-lg font-semibold">{meme.name}</h5>
-              {/* View Therapy Button */}
-              <button className="view-therapy-btn">View Therapy</button>
+        {therapies.map((therapy, index) => {
+          const fullText = therapy.description ? therapy.description[0] : "No description available.";
+
+          return (
+            <div key={index} className="meme-card">
+              <img 
+                src="https://via.placeholder.com/150"
+                className="meme-card-image" 
+                alt={`Therapy ${index + 1}`} 
+              />
+              <div className="meme-card-body">
+                <h5 className="text-lg font-semibold">
+                  {therapy.spl_product_data_elements ? therapy.spl_product_data_elements[0] : "No Name Available"}
+                </h5>
+                <p className={`therapy-description ${expanded[index] ? "expanded" : "collapsed"}`}>
+                  {fullText}
+                </p>
+                {fullText.split("\n").length > 7 && (
+                  <button className="see-more-button" onClick={() => toggleExpand(index)}>
+                    {expanded[index] ? "See Less" : "See More"}
+                  </button>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
