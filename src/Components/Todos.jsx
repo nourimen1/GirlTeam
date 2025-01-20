@@ -34,9 +34,7 @@ export default function Todos() {
   return (
     <div className="flex flex-col items-center justify-center bg-gray-100 p-8">
       <h1 className="text-4xl font-bold text-gray-800">Todos</h1>
-      <p className="text-lg text-gray-600 mt-4">
-        This is the TODOS page of your React application.
-      </p>
+       
 
       {/* Flex container for todos in a horizontal layout */}
       <div className="todos-container">
