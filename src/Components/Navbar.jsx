@@ -1,34 +1,20 @@
 import { Link } from 'react-router-dom';
+import './Navbar.css';
 
 export default function Navbar() {
     return (
-        <nav className="bg-[#1e3a8a] p-5 shadow-lg flex items-center justify-between px-10 rounded-b-lg">
+        <nav className="navbar">
             {/* Logo and Title Container */}
-            <div className="flex items-center space-x-4">
-                <img src="images.png" alt="Logo" className="h-12 w-12 object-contain" />
-                <span className="text-white text-xl font-bold">My App</span>
+            <div className="logo-container">
+                <img src="images.png" alt="Logo" className="logo" />
+                <span className="title">My App</span>
             </div>
 
             {/* Navigation Links */}
-            <div className="flex items-center space-x-8">
-                <Link
-                    to="/"
-                    className="text-white font-semibold text-lg px-4 py-2 rounded-md transition duration-300 ease-in-out transform hover:bg-[#4ade80] hover:text-black hover:scale-105 hover:shadow-xl"
-                >
-                    Home
-                </Link>
-                <Link
-                    to="/Todos"
-                    className="text-white font-semibold text-lg px-4 py-2 rounded-md transition duration-300 ease-in-out transform hover:bg-[#4ade80] hover:text-black hover:scale-105 hover:shadow-xl"
-                >
-                    All Todos
-                </Link>
-                <Link
-                    to="/Memes"
-                    className="text-white font-semibold text-lg px-4 py-2 rounded-md transition duration-300 ease-in-out transform hover:bg-[#4ade80] hover:text-black hover:scale-105 hover:shadow-xl"
-                >
-                    All Memes
-                </Link>
+            <div className="nav-links">
+                <Link to="/" className="nav-link">Home</Link>
+                <Link to="/psychologists" className="nav-link">Psychologists</Link>
+                <Link to="/therapies" className="nav-link">Therapies</Link>
             </div>
         </nav>
     );
