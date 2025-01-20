@@ -7,7 +7,7 @@ export default function Navbar() {
             {/* Logo and Title Container */}
             <div className="logo-container">
                 <img src="images.png" alt="Logo" className="logo" />
-                <span className="title">My App</span>
+                <span className="title">MindCare</span>
             </div>
 
             {/* Navigation Links */}
