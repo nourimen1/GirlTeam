@@ -1,3 +1,4 @@
+/* App.jsx */
 import { Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
 import Memes from "./Components/Memes"; // Assuming you have a Memes component
@@ -18,3 +19,4 @@ function App() {
 }
 
 export default App;
+
